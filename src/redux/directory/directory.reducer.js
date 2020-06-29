@@ -27,7 +27,7 @@ const INITIAL_STATE = {
           },
           {
             title: 'mens',
-            imageUrl: 'https://images.unsplash.com/photo-1515938736719-95b568dc8dd8?ixlib=rb-1.2.1&ixid=eyJhcHBfaWQiOjEyMDd9&auto=format&fit=crop&w=634&q=80',
+            imageUrl: 'https://images.unsplash.com/photo-1521341057461-6eb5f40b07ab?ixlib=rb-1.2.1&ixid=eyJhcHBfaWQiOjEyMDd9&auto=format&fit=crop&w=634&q=80',
             size: 'large',
             id: 5,
             linkUrl: 'shop/mens'
