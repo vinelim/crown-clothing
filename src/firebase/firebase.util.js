@@ -12,6 +12,8 @@ const config = {
     appId: "1:141141041204:web:39a48f185f1b8a74726a61"
   }
 
+firebase.initializeApp(config);
+
 export const createUserProfileDocument = async (userAuth, additionalData) => {
   if(!userAuth) return;
 
@@ -49,8 +51,6 @@ export const addCollectionAndDocs = async (collectionKey, objectsToAdd) => {
  return await batch.commit();
 }
 
-firebase.initializeApp(config);
-
 export const convertCollectionSnapshotToMap = (collections) => {
   const transformedCollection = collections.docs.map(doc => {
     const { title, items } = doc.data();
@@ -68,12 +68,21 @@ export const convertCollectionSnapshotToMap = (collections) => {
   }, {});
 }
 
+export const getCurrentUser = () => {
+  return new Promise((resolve, reject) => {
+    const unsubscribe = auth.onAuthStateChanged(userAuth => {
+      unsubscribe();
+      resolve(userAuth);
+    }, reject)
+  });
+}
+
 export const auth = firebase.auth();
 export const firestore = firebase.firestore();
 
-const provider = new firebase.auth.GoogleAuthProvider();
-provider.setCustomParameters({ prompt: 'select_account' });
-export const signInWithGoogle = () => auth.signInWithPopup(provider);
+export const googleProvider = new firebase.auth.GoogleAuthProvider();
+googleProvider.setCustomParameters({ prompt: 'select_account' });
+export const signInWithGoogle = () => auth.signInWithPopup(googleProvider);
 
 export default firebase;
 
