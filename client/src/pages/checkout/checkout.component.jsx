@@ -29,7 +29,9 @@ const CheckoutPage = ({cartItems, total}) => (
         </div>
         {cartItems.map(cartItem => <CheckoutItem key={cartItem.id} cartItem={cartItem} />)}
         <div className="total">
-            <span>TOTAL: ${total}</span>
+            <span>{total === 0 ? "Your Cart is Empty" : 
+            `TOTAL: $${total}`
+            }</span>
         </div>
         <div className="test-warning">
             *Please use the following test credit card for payments* 

@@ -22,6 +22,7 @@ const StripeCheckoutButton = ({ price }) => {
                 "There was an issue with your payment. Please ensure you use the provided credit card"
             );
         });
+
     };
 
     return (
@@ -30,13 +31,12 @@ const StripeCheckoutButton = ({ price }) => {
         name="Crown Clothing Ltd"
         billingAddress
         shippingAddress
-        image=""
+        image="https://sendeyo.com/up/d/f3eb2117da"
         description={`Your total is $${price}`}
         amount={priceForStripe}
         panelLabel="Pay Now"
         token={onToken}
         stripeKey={publishableKey}
-        sameSite="true"
         />
     )
 };
